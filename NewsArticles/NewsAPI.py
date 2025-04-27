@@ -17,6 +17,8 @@ print("Requests module imported successfully!")
 if articles:
     first_article= articles[0]
     print("Title:", first_article['title'])
+    print("Source ID:", first_article.get('source', {}).get('id'))
+    print("Source Name:", first_article.get('source', {}).get('name'))
     print("Link:", first_article['url'])
     print("Date:", first_article['publishedAt'])
 else:
