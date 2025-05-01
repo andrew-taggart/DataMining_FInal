@@ -11,7 +11,8 @@ Answer:
 - List folders and describe use
 - Specific Techniques
   - Descriptive
-    - Classification (add specific methods and tools)
+    - Classification (sentiment analysis of text)
+    - 
   - Predictive
   - Text Mining
   - Big Data/Cloud Mining
@@ -23,10 +24,38 @@ Answer:
 - Presentation Format
 
 ## Setup
-- Activate environment
-- then: pip install requests
-  - requests
-  - nltk
+-	Suggest creating virtual Environment
+-	Pip installs
+```
+pip install requests python-dotenv sqlalchemy nltk newspaper3k matplotlib lxml_html_clean
+``` 
+-	Create .env file
+```
+API_KEY=your_newsapi_key_here
+``` 
+-	Download NLTK Data
+```
+python3 -c "import nltk; [nltk.download(p) for p in ['punkt', 'wordnet', 'sentiwordnet', 'averaged_perceptron_tagger']]"
+``` 
+-	Initialize the Database
+```
+python scripts/init_db.py
+``` 
+-	Fetch and Store News Articles
+```
+python scripts/scrape_and_store.py
+``` 
+-	Extract Full Text from URLs
+```
+python scripts/extract_full_text.py
+``` 
+-	Analyze Sentiment and Visualize Results
+```
+python scripts/analyze_sentiment.py
+``` 
+
+
+
 
 ## Software/Tools Used
 - [News API](https://newsapi.org/)
