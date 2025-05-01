@@ -1,6 +1,9 @@
 import requests
+from dotenv import load_dotenv
+import os
 
-api_key = 'a3fca4a804504596bf27e4b001e4f8e7'
+load_dotenv()
+api_key = os.getenv('API_KEY')
 url = ('https://newsapi.org/v2/everything?'
        'q=tariffs$'
        'language=en&'
