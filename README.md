@@ -11,7 +11,8 @@ Answer:
 - List folders and describe use
 - Specific Techniques
   - Descriptive
-    - Classification (add specific methods and tools)
+    - Classification (sentiment analysis of text)
+    - 
   - Predictive
   - Text Mining
   - Big Data/Cloud Mining
