@@ -1,8 +1,17 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+API_KEY = "4c24c29d330c41c7adb7f6e087267595"  # your actual NewsAPI key
+query = "tariffs"
+url = f"https://newsapi.org/v2/everything?q={query}&language=en&sortBy=publishedAt&apiKey={API_KEY}"
 
+response = requests.get(url)
+data = response.json()
 
+if "articles" not in data:
+    raise ValueError("Error fetching articles")
+
+articles = data["articles"]
 
 scores = []
 sentiment_labels = {"Positive": 0, "Negative": 0, "Neutral": 0}
