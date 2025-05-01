@@ -13,10 +13,11 @@ import gensim.models
 from gensim.models import CoherenceModel
 import pandas as pd
 import matplotlib.colors as mcolors
+import numpy as np
 
 nlp = spacy.load('en_core_web_sm', disable=['parser', 'ner'])
 import matplotlib.pyplot as plt
-
+from matplotlib.patches import Rectangle
 from collections import Counter
 
 
@@ -84,21 +85,24 @@ def main():
     coherence_model_lda = CoherenceModel(model=lda_model, texts=all_lemmas, dictionary=id2word, coherence='c_v')
     coherence_lda = coherence_model_lda.get_coherence()
     print('\nCoherence Score: ', coherence_lda)
- 
 
-  
-        
-    topics = lda_model.show_topics(formatted=False)
+    doc_lens = [len(doc) for doc in all_lemmas]
 
-    # Flatten just the words for counting
-    all_words = [word for _, topic in topics for word, _ in topic]
-    counter = Counter(all_words)
 
-    out = []
-    for i, topic in topics:
-        for word, weight in topic:
-            out.append([word, i, weight, counter[word]])
+    # Plot
+    plt.figure(figsize=(16,7), dpi=160)
+    plt.hist(doc_lens, bins = 1000, color='navy')
+    plt.text(750, 100, "Mean   : " + str(round(np.mean(doc_lens))))
+    plt.text(750,  90, "Median : " + str(round(np.median(doc_lens))))
+    plt.text(750,  80, "Stdev   : " + str(round(np.std(doc_lens))))
+    plt.text(750,  70, "1%ile    : " + str(round(np.quantile(doc_lens, q=0.01))))
+    plt.text(750,  60, "99%ile  : " + str(round(np.quantile(doc_lens, q=0.99))))
 
+    plt.gca().set(xlim=(0, 1000), ylabel='Number of Documents', xlabel='Document Word Count')
+    plt.tick_params(size=16)
+    plt.xticks(np.linspace(0,1000,9))
+    plt.title('Distribution of Document Word Counts', fontdict=dict(size=22))
+    plt.show()
 
     
 
