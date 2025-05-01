@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[13]:
+
 
 
 scores = []
@@ -29,7 +29,7 @@ for art in articles:
 # In[15]:
 
 
-# 📊 Heatmap of sentiment per source domain
+# Heatmap of sentiment per source domain
 print("\nGenerating heatmap by news source...\n")
 
 import seaborn as sns
@@ -57,7 +57,7 @@ plt.tight_layout()
 plt.show()
 
 
-# In[ ]:
+
 
 
 
