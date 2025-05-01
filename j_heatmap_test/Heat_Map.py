@@ -1,5 +1,10 @@
 #!/usr/bin/env python
 # coding: utf-8
+import requests
+from descriptive.sentiment import analyze_sentiment
+import seaborn as sns
+import pandas as pd
+import matplotlib.pyplot as plt
 
 API_KEY = "4c24c29d330c41c7adb7f6e087267595"  # your actual NewsAPI key
 query = "tariffs"
