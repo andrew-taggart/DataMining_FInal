@@ -1,5 +1,3 @@
-# newsapi/fetch_articles.py
-
 import requests
 import os
 from dotenv import load_dotenv
